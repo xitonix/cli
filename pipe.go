@@ -11,10 +11,10 @@ import (
 func IsChained() (bool, error) {
 	stdin, err := os.Stdin.Stat()
 	if err != nil {
-		return false, nil
+		return false, err
 	}
 
-	return stdin.Mode()&os.ModeCharDevice == 0 && stdin.Size() > 0, nil
+	return stdin.Mode()&os.ModeCharDevice == 0, nil
 }
 
 // PipeIn reads the output of the command chain
