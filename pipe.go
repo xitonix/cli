@@ -40,20 +40,21 @@ func PipeIn() (string, error) {
 
 // PipeInIfChained reads the output of the command chain if the cli tool is piped in.
 //
-// This is an alias for IsChained and PipeIn.
-func PipeInIfChained() (string, error) {
-	chained, err := IsChained();
+// A boolean value will be returned indicating whether or not the current binary was piped in.
+// This methods an alias for IsChained and PipeIn methods combined.
+func PipeInIfChained() (string, bool, error) {
+	chained, err := IsChained()
 	if err != nil {
-		return "", err
+		return "", false, err
 	}
 
 	if !chained {
-		return "", nil
+		return "", chained, nil
 	}
 
 	output, err := PipeIn()
 	if err != nil {
-		return "", err
+		return "", chained, err
 	}
-	return output, nil
+	return output, chained, nil
 }
