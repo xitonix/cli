@@ -1,12 +1,3 @@
-A simple package to add piping feature to Go cli tools
-
-## Installation
-
-`go get -u go.xitonix.io/cli`
-
-## Usage
-
-```go
 package main
 
 import (
@@ -27,6 +18,3 @@ func main() {
 		fmt.Println("Not piped in")
 	}
 }
-
-```
-
